@@ -1,0 +1,26 @@
+
+- name: Synchronization origin database config and FS config
+  become: yes
+  synchronize:
+    src: /var/lib/mysql/
+    dest: /appli/projects/wikib/mariadb/mysql
+    perms: yes
+    recursive: yes
+
+#- name: Synchronization database dans le FS
+#  command: rsync -a /var/lib/mysql /appli/projects/wikib/mariadb
+
+
+#- name: déplacer et renommer mysql en mysql.bak
+#  command: mv /var/lib/mysql /var/lib/mysql.bak
+
+
+#- name: Synchronization origin database config and FS config
+#  command: rsync -av /var/lib/mysql /appli/projects/wikib/mariadb
+#  register: result
+#  when: result is failed
+
+#- name: Synchronization origin database config and FS config
+#
+
+command: ln -s /appli/projects/wikib/mariadb/mysql /var/lib/mysql
